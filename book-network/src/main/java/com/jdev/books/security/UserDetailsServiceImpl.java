@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.jdev.books.user.userRepository;
+import com.jdev.books.user.UserRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,13 +14,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService{
 
-    private final userRepository repository;
+    private final UserRepository repository;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException{
         return repository.findByEmail(userEmail)
-                .orElseThrow(() -> new UsernameNotFoundException("Usesr not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
 }

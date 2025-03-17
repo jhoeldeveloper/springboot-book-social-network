@@ -16,7 +16,7 @@ services:
     restart: unless-stoped
   mail-dev:
     container_name: mail-dev-bsn
-    imae: maildev/maildev
+    image: maildev/maildev
     ports:
       - 1080:1080
       - 1025:1025
